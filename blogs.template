@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <style>
+        body {
+        word-wrap: break-word;
+        font: 14px/200% "Hiragino Sans GB","Microsoft YaHei","微软雅黑",tahoma,arial,simsun,"宋体";
+        background: #e8e8e8;
+        color:#666;
+        }
+        h2{
+        font:16px;
+        padding:10px 10px 0px 10px;
+        font-weight:bold;
+        color:#555;
+        }
+        span{
+        padding:0px 0px 0px 10px;
+        }
+        section div{
+        margin: 15px 15px 35px 15px;
+        }
+        /* 文字链接颜色 #666 */
+        a{color:#666;}
+        /* 文字链接状态颜色 #222 */
+        a:hover{color:#222;}
+    </style>
+</head>
+<body>
+<ul>
+    {{#blogs}}
+    <li>
+        <a href="#blog{{_id}}">{{pubtime}} {{title}}</a>
+    </li>
+    {{/blogs}}
+</ul>
+<section>
+    {{#blogs}}
+    <div style="background:white">
+        <a name="blog{{_id}}" rel="blog{{_id}}"><h2>{{title}}</h2></a>
+        <span>{{pubtime}}</span>
+
+        <div>{{&content}}</div>
+    </div>
+    {{/blogs}}
+
+</section>
+</body>
+</html>
