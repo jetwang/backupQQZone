@@ -12,18 +12,19 @@ import java.io.IOException;
 
 public class Backup {
     static WebDriver getWebDriver() {
+        System.getProperties().setProperty("webdriver.chrome.driver","chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addExtensions(new File("1.1_0.crx"));
         return new ChromeDriver(options);
     }
 
     static WebDriverWait login(WebDriver driver) {
-        driver.get("http://user.qzone.qq.com/15661273/");
+        driver.get("http://user.qzone.qq.com/273081688");
         driver.switchTo().frame("login_frame");
 
         driver.findElement(By.id("switcher_plogin")).click();
         WebElement userId = driver.findElement(By.id("u"));
-        userId.sendKeys("15661273");
+        userId.sendKeys("273081688");
         WebElement password = driver.findElement(By.id("p"));
         password.sendKeys("");
         driver.findElement(By.id("login_button")).click();
@@ -45,7 +46,7 @@ public class Backup {
                 if (nextArticle.getAttribute("href").indexOf("blog") > 0) {
                     nextArticle.click();
                     wait = new WebDriverWait(driver, 5);
-                    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a#navigatorSpan1")));
+                    wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a#navigatorSpan1")));
                 } else {
                     break;
                 }

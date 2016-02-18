@@ -39,7 +39,7 @@ public class BlogStore {
         System.setProperty("DEBUG.MONGO", "false");
         System.setProperty("DB.TRACE", "false");
         MongoClient mongoClient = new MongoClient();
-        MongoDatabase database = mongoClient.getDatabase("llblog");
+        MongoDatabase database = mongoClient.getDatabase("enblog");
         return database.getCollection(author + "-blog");
     }
 

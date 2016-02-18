@@ -13,7 +13,9 @@ public class BlogReader {
         HashMap<String, Object> scopes = new HashMap<String, Object>();
         scopes.put("blogs", blogs);
 
-        Writer writer = new FileWriter(new File("blogs/blogs.html"));
+        File file = new File("blogs/blogs.html");
+        file.getParentFile().mkdirs();
+        Writer writer = new FileWriter(file);
         MustacheFactory mf = new DefaultMustacheFactory();
         Mustache mustache = mf.compile(new FileReader("blogs.template"), "template");
         mustache.execute(writer, scopes);
